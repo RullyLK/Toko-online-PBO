@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Alert } from 'antd';
-
+import { Button, Alert, Space } from 'antd';
+import { Card } from 'antd';
 const CardComp = {
     Card: ({ image, title, description }) => {
         return (
@@ -30,6 +30,7 @@ const CardComp = {
         )
     },
     CardKeranjnag: (({ image }) => {
+        const { Meta } = Card;
         const [isAlertVisible, setIsAlertVisible] = useState(false);
 
         const handleDeleteClick = () => {
@@ -40,23 +41,21 @@ const CardComp = {
             setIsAlertVisible(false);
         };
         return (
-            <div className='w-[600px] p-3 h-[220px] rounded-3xl bg-slate-400'>
-                <div className='flex flex-row'>
-                    <img
-                        className="rounded-tl-[10px] w-[150px] h-[135px] rounded-tr-[10px]"
-                        src={image}
-                        alt=""
-                    />
-                    <div className="flex flex-col justify-between ml-4">
-                        <div className='m-4'>
-                            <h3>Nama Produk</h3>
-                            <h3>Harga Produk</h3>
-                        </div>
-                        <div className="flex justify-center items-center h-full px-[120px]">
-                            <button onClick={handleDeleteClick}>Hapus Pesanan</button>
-                        </div>
-                    </div>
-                </div>
+            <div className='w-[600px] p-3 h-[220px]'>
+                {/* By Aldi */}
+                <Card
+                    hoverable
+                    style={{ width: 250 }}
+                    cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+                >
+                    <Meta title="NamaBarang" />
+                    <Meta title="HargaBarang" description="SisaBarang" /><br />
+                    <Space direction="vertical" style={{ width: '100%' }}>
+                        <Button block>
+                            Beli Sekarang
+                        </Button>
+                    </Space>
+                </Card>
 
                 {isAlertVisible && (
                     <Alert
